@@ -116,7 +116,7 @@ resource "null_resource" "icp-boot" {
 
   # Copy the provided or generated private key
   provisioner "file" {
-      content = "${var.generate_key ? tls_private_key.icpkey.private_key_pem : file(var.icp_priv_keyfile)}"
+      content = "${var.generate_key ? file(var.icp_priv_keyfile) : file(var.icp_priv_keyfile)}"
       destination = "/opt/ibm/cluster/ssh_key"
   }
   
