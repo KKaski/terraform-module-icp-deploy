@@ -28,7 +28,7 @@ resource "null_resource" "icp-cluster" {
   }
 
   provisioner "file" {
-      content = "${var.generate_key ? tls_private_key.icpkey.public_key_openssh : file(var.icp_pub_keyfile)}"
+      content = "${var.generate_key ? file(var.icp_pub_keyfile) : file(var.icp_pub_keyfile)}"
       destination = "/tmp/icpkey"
   
   }
