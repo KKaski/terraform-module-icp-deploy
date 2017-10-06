@@ -4,9 +4,9 @@ resource "tls_private_key" "icpkey" {
   count       = "${var.generate_key ? 1 : 0}"
   algorithm   = "RSA"
   
-  provisioner "local-exec" {
-    command = "cat > privatekey.pem <<EOL\n${tls_private_key.icpkey.private_key_pem}\nEOL"
-  }
+  #provisioner "local-exec" {
+  #  command = "cat > privatekey.pem <<EOL\n${tls_private_key.icpkey.private_key_pem}\nEOL"
+  #}
 }
 
 ## Actions that has to be taken on all nodes in the cluster
